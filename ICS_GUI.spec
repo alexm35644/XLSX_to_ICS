@@ -29,10 +29,17 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon=['ubc-logo.icns'],
+)
+app = BUNDLE(
+    exe,
+    name='ICS_GUI.app',
+    icon='ubc-logo.icns',
+    bundle_identifier=None,
 )

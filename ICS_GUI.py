@@ -1,20 +1,20 @@
 from datetime import datetime
 from icalendar import Calendar, Event
 import zoneinfo
-import os
+from os import path
 import sys
 import openpyxl 
 import re
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QFileDialog
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QFileDialog, QTextEdit
 from PyQt5.QtCore import Qt
 
 # FILE STUFF
 if getattr(sys, 'frozen', False):  # Check if running as a frozen executable
     executable_path = os.path.dirname(sys.executable)
 else:
-    executable_path = os.path.dirname(os.path.abspath(__file__))
+    executable_path = path.dirname(path.abspath(__file__))
 
-file_path = os.path.join(executable_path, "schedule.ics")
+file_path = path.join(executable_path, "schedule.ics")
 
 # Time formatting function
 def extractTime(text):
@@ -57,11 +57,12 @@ class MyWindow(QWidget):
         self.label = QLabel("Click to Import File", self)
         self.label.setStyleSheet("font-size: 18px;")
         self.label.setAlignment(Qt.AlignCenter)
+        self.label.setTextInteractionFlags(Qt.TextSelectableByMouse)
 
         # Create a QPushButton widget
         self.button = QPushButton("Click to Convert", self)
         self.button.setVisible(False)  # Initially hidden
-        self.button.clicked.connect(self.on_button_click)
+        self.button.clicked.connect(self.File_Conversion)
         self.button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px 20px;")
 
         # Create a button to simulate the file import action
@@ -88,7 +89,7 @@ class MyWindow(QWidget):
         
         # Open a file dialog to select a file
         options = QFileDialog.Options()
-        self.file_path_excel, _ = QFileDialog.getOpenFileName(self, "Select File", "", "Excel Files (*.xlsx);;All Files (*)", options=options) #only allow .xlsx
+        self.file_path_excel, _ = QFileDialog.getOpenFileName(self, "Select File", "", "Excel Files (*.xlsx);;All Files (*)", options=options) # only allow .xlsx files
         
         if self.file_path_excel:
             self.label.setText(f"File imported: {self.file_path_excel}")
@@ -100,7 +101,7 @@ class MyWindow(QWidget):
         self.import_button.setVisible(False)  # Hide import button after import
         self.import_button.setEnabled(True)  # Re-enable import button
 
-    def on_button_click(self):
+    def File_Conversion(self):
         if not self.file_path_excel:
             self.label.setText("No file selected.")
             return
@@ -119,13 +120,13 @@ class MyWindow(QWidget):
             end = row[11].value
 
             event.add('summary', section)
-            time_array = extractTime(info)
+            time_array = extractTime(info) # Parses the info sectino to find the time of the class
             startHour, startMinute, endHour, endMinute = time_array
             Second = 0
             event.add('dtstart', datetime(start.year, start.month, start.day, startHour, startMinute, Second, tzinfo=zoneinfo.ZoneInfo("America/Vancouver")))
             event.add('dtend', datetime(end.year, end.month, end.day, endHour, endMinute, Second, tzinfo=zoneinfo.ZoneInfo("America/Vancouver")))
 
-            location = extractLocation(info)
+            location = extractLocation(info) # Parses the location section to find the location of the class
             event.add('description', location)
 
             # Recurrence (for example)
@@ -140,7 +141,7 @@ class MyWindow(QWidget):
             f.write(cal.to_ical())
 
         # After file conversion is done
-        self.label.setText("Done")
+        self.label.setText("Done - File is located at "+executable_path+"/schedule.ics")
         self.button.setVisible(False)  # Hide the Convert button
         self.import_button.setVisible(False)  # Hide the Import button
         
