@@ -13,7 +13,7 @@ if getattr(sys, 'frozen', False):  # Check if running as a frozen executable
 else:
     executable_path = os.path.dirname(os.path.abspath(__file__))
 
-file_path = os.path.join(executable_path, "bruh.ics")
+file_path = os.path.join(executable_path, "schedule.ics")
 
 # Time formatting function
 def extractTime(text):
