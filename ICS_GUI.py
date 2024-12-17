@@ -6,6 +6,7 @@ import sys
 import openpyxl 
 import re
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QFileDialog
+from PyQt5.QtCore import Qt
 
 # FILE STUFF
 if getattr(sys, 'frozen', False):  # Check if running as a frozen executable
@@ -53,16 +54,24 @@ class MyWindow(QWidget):
         self.setGeometry(100, 100, 300, 200)
 
         # Create a QLabel widget
-        self.label = QLabel("Click to Convert File", self)
+        self.label = QLabel("Click to Import File", self)
+        self.label.setStyleSheet("font-size: 18px;")
+        self.label.setAlignment(Qt.AlignCenter)
 
         # Create a QPushButton widget
-        self.button = QPushButton("Convert", self)
+        self.button = QPushButton("Click to Convert", self)
         self.button.setVisible(False)  # Initially hidden
         self.button.clicked.connect(self.on_button_click)
+        self.button.setStyleSheet("background-color: #4CAF50; color: white; font-size: 18px; padding: 10px 20px;")
 
         # Create a button to simulate the file import action
         self.import_button = QPushButton("Import File", self)
         self.import_button.clicked.connect(self.import_file)
+        self.import_button.setStyleSheet("background-color: #47A6F9; color: white; font-size: 18px; padding: 10px 20px;")
+
+
+
+
 
         # Set the layout of the widgets
         layout = QVBoxLayout()
@@ -79,7 +88,7 @@ class MyWindow(QWidget):
         
         # Open a file dialog to select a file
         options = QFileDialog.Options()
-        self.file_path_excel, _ = QFileDialog.getOpenFileName(self, "Select File", "", "All Files (*)", options=options)
+        self.file_path_excel, _ = QFileDialog.getOpenFileName(self, "Select File", "", "Excel Files (*.xlsx);;All Files (*)", options=options) #only allow .xlsx
         
         if self.file_path_excel:
             self.label.setText(f"File imported: {self.file_path_excel}")
