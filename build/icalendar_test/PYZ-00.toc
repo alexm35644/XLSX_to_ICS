@@ -1,4 +1,5 @@
-('/Users/alexandermartinez/Desktop/ICS/build/icalendar_test/PYZ-00.pyz',
+('/Users/alexandermartinez/Desktop/ics '
+ 'git/XLSX_to_ICS/build/icalendar_test/PYZ-00.pyz',
  [('__future__',
    '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/__future__.py',
    'PYMODULE'),
