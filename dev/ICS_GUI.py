@@ -20,7 +20,7 @@ class MyWindow(QWidget):
         super().__init__()
 
         self.setWindowTitle("XLSX Schedule to ISCS")
-        self.setGeometry(100, 100, 300, 200)
+        self.setGeometry(400, 200, 600, 600)
 
         # Create a QLabel widget
         self.label = QLabel("Click to Import File", self)
