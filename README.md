@@ -1,14 +1,14 @@
 # XLSX_to_ICS
 
 ## Description 
-This prorgam converts the excel file provided by the ubc workday website into an ICS file for easy importing to your calendar. Currently only works for MACOS if you use the executable file. Feel free to run the straight python (the GUI_ICS.py) - you will need to install the required libraries if you do. 
+This prorgam converts the excel file provided by the ubc workday website into an ICS file for easy importing to your calendar. Feel free to run the straight python (the GUI_ICS.py) - you will need to install the required libraries if you do. 
 
-## Instructions (Only MACOS 😔)
+## Instructions 
 - Download this repository. Either clone it or download a zip file. 
 [CLICK HERE TO DOWNLOAD ZIP.](https://github.com/alexm35644/XLSX_to_ICS/archive/refs/heads/main.zip)
 - Download your schedule from workday (the excel file). It is found in view my courses. There is a button to donwload excel file on the right above the calendar. 
 ![download button](Images/workday_download.png)
-- open up the folder titled "OPEN_THIS". Click on the file inside called SCHEDULE_GEN. Give it a few seconds to load. 
+- open up the folder titled "MAC" if you are on MAC or "WINDOWS" if you are on windows. Click on the file inside called ICS_GUI. Give it a few seconds to load. 
 - One a window pops up, select the button, select the file of your schedule (should be a .xlsx file), and click okay
 - Click Convert 
 - a schedule.ics file should pop up in the same folder as SCHEDULE_GEN. 
