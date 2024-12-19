@@ -13,7 +13,7 @@ This prorgam converts the excel file provided by the ubc workday website into an
 - Click Convert 
 - a schedule.ics file should pop up in the same folder as SCHEDULE_GEN. 
 - You can upload this file to the calendar of your choice. 
-### APPLE CALENDAR 
+### APPLE CALENDAR 📅
 If you are on mac, when you click on the file it should open up the default calendar app. It will ask you which calendar you want to add the file to. Add it to the calendar of your choice. 
-### GOOGLE CALENDAR 
+### GOOGLE CALENDAR 🍭
 Look up google calendar on your browser. Go to settings (you can find it on the top right). Select import & export. Import the schedule.ics file. 
