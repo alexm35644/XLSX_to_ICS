@@ -3,7 +3,7 @@
 ## Description 
 This prorgam converts the excel file provided by the ubc workday website into an ICS file for easy importing to your calendar. Feel free to run the straight python (the GUI_ICS.py) - you will need to install the required libraries if you do. 
 
-__NOTES:__ I set it so it only adds classes scheduled in 2025 that appear under your "enrolled sections". I did my best to account for irregularities in schedules such as classes that change location depending on the day of week, classes with alternating weeks, or classes that end early. The location of the class should be added in the description of the calendar event. 
+__NOTES:__ I made it so it only adds classes scheduled in 2025 that appear under your "enrolled sections". I did my best to account for irregularities in schedules such as classes that change location depending on the day of week, classes with alternating weeks (like labs), or classes that end early. The location of the class should be added in the description of the calendar event. Reading break is accounted for as well.
 
 ## Instructions 
 - Download this repository. Either clone it or download a zip file. 
