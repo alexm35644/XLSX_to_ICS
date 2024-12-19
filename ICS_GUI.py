@@ -3,7 +3,7 @@ import sys
 import openpyxl 
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QFileDialog, QTextEdit
 from PyQt5.QtCore import Qt
-from icalendar_test import generate_calendar
+from ics_generator import generate_calendar
 
 # FILE STUFF
 if getattr(sys, 'frozen', False):  # Check if running as a frozen executable

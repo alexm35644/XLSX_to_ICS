@@ -1,3 +1,0 @@
-([('ICS_GUI',
-   '/Users/alexandermartinez/Desktop/ics git/XLSX_to_ICS/dist/ICS_GUI',
-   'EXECUTABLE')],)
