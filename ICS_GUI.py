@@ -79,7 +79,9 @@ class MyWindow(QWidget):
         wb = openpyxl.load_workbook(self.file_path_excel)
         sheet = wb.active
 
+        #Custom ICS logic 
         cal = generate_calendar(sheet)
+
         #Write to .ics file
         with open(file_path, "wb") as f:
             f.write(cal.to_ical())

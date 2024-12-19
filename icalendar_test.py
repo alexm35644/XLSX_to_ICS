@@ -23,35 +23,6 @@ file_path_excel = os.path.join(executable_path, "View_My_Courses.xlsx")
 wb = openpyxl.load_workbook(file_path_excel)
 sheet = wb.active
 
-# Time formatting function
-def extractTime(text): #UPDATE TO EXTRACT FROM MEETING TIMES
-    # Function to convert time to 24-hour format
-    def convert_to_24hr(time_str):
-        # Convert 'a.m.' and 'p.m.' to 'AM' and 'PM' for compatibility
-        time_str = time_str.replace("a.m.", "AM").replace("p.m.", "PM")
-        return datetime.strptime(time_str, "%I:%M %p").strftime("%H:%M")
-
-    # Extract the time range using regular expressions (considering a.m. and p.m.)
-    time_range = re.search(r"(\d{1,2}:\d{2} [ap\.m]+) - (\d{1,2}:\d{2} [ap\.m]+)", text)
-
-    if time_range:
-        # Convert start and end time to 24-hour format
-        start_time_24hr = convert_to_24hr(time_range.group(1).strip())
-        end_time_24hr = convert_to_24hr(time_range.group(2).strip())
-
-        # Split hour and minute into separate elements and store them in a flat list
-        start_hour, start_minute = map(int, start_time_24hr.split(":"))
-        end_hour, end_minute = map(int, end_time_24hr.split(":"))
-
-        # Store each value in a flat 4x1 list
-        time_list = [start_hour, start_minute, end_hour, end_minute]
-        
-        return time_list
-    else:
-        return None
-
-import re
-
 def extract_locations(text):
     """
     Extracts the location from a text and returns it as a list of strings.
