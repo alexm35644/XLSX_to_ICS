@@ -3,7 +3,7 @@
 ## Description 
 This prorgam converts the excel file provided by the ubc workday website into an ICS file for easy importing to your calendar. Currently only works for MACOS if you use the executable file. 
 
-## Instructions 
+## Instructions (Only MACOS 😔)
 - Download this repository. Either clone it or download a zip file. 
 [CLICK HERE TO DOWNLOAD ZIP](https://github.com/alexm35644/XLSX_to_ICS/archive/refs/heads/main.zip)
 - Download your schedule from workday (the excel file). It is found in view my courses. There is a button to donwload excel file on the right above the calendar. 
