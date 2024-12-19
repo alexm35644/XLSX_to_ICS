@@ -11,7 +11,7 @@ __NOTES:__ I made it so it only adds classes scheduled in 2025 that appear under
 - Download your schedule from workday (the excel file). It is found in view my courses. There is a button to donwload excel file on the right above the calendar. 
 ![download button](Images/workday_download.png)
 - open up the folder titled "MAC" if you are on MAC or "WINDOWS" if you are on windows. Click on the file inside called ICS_GUI. Give it a few seconds to load. 
-- One a window pops up, select the button, select the file of your schedule (should be a .xlsx file), and click okay
+- Once a window pops up, select the button, select the file of your schedule (should be a .xlsx file), and click okay
 - Click Convert 
 - a schedule.ics file should pop up in the same folder as SCHEDULE_GEN. 
 - You can upload this file to the calendar of your choice. 
