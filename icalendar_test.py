@@ -7,22 +7,6 @@ import sys
 import openpyxl 
 import re
 
-
-#FILE STUFF
-if getattr(sys, 'frozen', False):  # Check if running as a frozen executable
-    # Running as an executable, so get the directory where the executable was run from
-    executable_path = os.path.dirname(sys.executable)  # Get the directory of the executable
-else:
-    # Running as a script
-    executable_path = os.path.dirname(os.path.abspath(__file__))  # Get the script's location
-
-# file_path = os.path.join(executable_path, "Calendar.ics")
-# file_path_excel = os.path.join(executable_path, "View_My_Courses.xlsx")
-
-# #EXCEL FILE READING
-# wb = openpyxl.load_workbook(file_path_excel)
-# sheet = wb.active
-
 def extract_locations(text):
     """
     Extracts the location from a text and returns it as a list of strings.
@@ -174,13 +158,4 @@ def generate_calendar(sheet, term_start):
             #Add to calendar 
             cal.add_component(event)
     return cal
-
-
-
-# cal = generate_calendar(sheet, 2025)
-# #Write to .ics file
-# with open(file_path, "wb") as f:
-#      f.write(cal.to_ical())
-#      f.close()
-
 
