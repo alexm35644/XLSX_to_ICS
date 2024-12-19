@@ -15,6 +15,7 @@ __NOTES:__ I set it so it only adds classes scheduled in 2025 that appear under 
 - Click Convert 
 - a schedule.ics file should pop up in the same folder as SCHEDULE_GEN. 
 - You can upload this file to the calendar of your choice. 
+
 ### APPLE CALENDAR 📅
 If you are on mac, when you click on the file it should open up the default calendar app. It will ask you which calendar you want to add the file to. Add it to the calendar of your choice. 
 ### GOOGLE CALENDAR 🍭
