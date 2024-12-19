@@ -5,7 +5,7 @@ This prorgam converts the excel file provided by the ubc workday website into an
 
 ## Instructions (Only MACOS 😔)
 - Download this repository. Either clone it or download a zip file. 
-[CLICK HERE TO DOWNLOAD ZIP](https://github.com/alexm35644/XLSX_to_ICS/archive/refs/heads/main.zip)
+[CLICK HERE TO DOWNLOAD ZIP.](https://github.com/alexm35644/XLSX_to_ICS/archive/refs/heads/main.zip)
 - Download your schedule from workday (the excel file). It is found in view my courses. There is a button to donwload excel file on the right above the calendar. 
 ![download button](Images/workday_download.png)
 - open up the folder titled "OPEN_THIS". Click on the file inside called SCHEDULE_GEN. Give it a few seconds to load. 
