@@ -6,7 +6,7 @@ This prorgam converts the excel file provided by the ubc workday website into an
 ## Instructions 
 - Download this repository. Either clone it or download a zip file. 
 - Download your schedule from workday (the excel file). It is found in view my courses. There is a button to donwload excel file on the right above the calendar. 
-![download button](images/workday_download.png)
+![download button](Images/workday_download.png)
 - open up the folder titled "OPEN_THIS". Click on the file inside called SCHEDULE_GEN. Give it a few seconds to load. 
 - One a window pops up, select the button, select the file of your schedule (should be a .xlsx file), and click okay
 - Click Convert 
