@@ -80,7 +80,7 @@ class MyWindow(QWidget):
         sheet = wb.active
 
         #Custom ICS logic 
-        cal = generate_calendar(sheet)
+        cal = generate_calendar(sheet, 2025)
 
         #Write to .ics file
         with open(file_path, "wb") as f:

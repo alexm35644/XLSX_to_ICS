@@ -16,12 +16,12 @@ else:
     # Running as a script
     executable_path = os.path.dirname(os.path.abspath(__file__))  # Get the script's location
 
-file_path = os.path.join(executable_path, "Calendar.ics")
-file_path_excel = os.path.join(executable_path, "View_My_Courses.xlsx")
+# file_path = os.path.join(executable_path, "Calendar.ics")
+# file_path_excel = os.path.join(executable_path, "View_My_Courses.xlsx")
 
-#EXCEL FILE READING
-wb = openpyxl.load_workbook(file_path_excel)
-sheet = wb.active
+# #EXCEL FILE READING
+# wb = openpyxl.load_workbook(file_path_excel)
+# sheet = wb.active
 
 def extract_locations(text):
     """
@@ -72,16 +72,41 @@ def extract_days_of_week(text):
     """
     Extracts and formats the days of the week from the text.
     The days are formatted as a 2D array with the first two letters in lowercase.
+    Handles the special case of "(Alternate weeks)".
     """
+    # Updated regex to capture the days, ignoring "(Alternate weeks)" or other similar text
     days_pattern = r"\| (.*?) \|"
     matches = re.findall(days_pattern, text)
 
     formatted_days = []
     for match in matches:
+        # Remove the "(Alternate weeks)" part, if present
+        clean_match = re.sub(r"\(.*\)", "", match).strip()
+        
         # Split the days by spaces, take the first two letters of each, and convert to lowercase
-        formatted_days.append([day[:2].lower() for day in match.split()])
+        formatted_days.append([day[:2].lower() for day in clean_match.split()])
 
     return formatted_days if formatted_days else None
+
+def check_alternate_weeks(text):
+    """
+    Checks if 'Alternate weeks' is mentioned in the days of the week.
+    Sets array[0] to True if 'Alternate weeks' is present, otherwise False.
+    """
+    # Split the text by lines to process each event individually
+    lines = text.split('\n')
+    
+    # Initialize an empty array to store the results
+    result = []
+
+    for line in lines:
+        # Look for the phrase "(Alternate weeks)" in the line
+        if "(Alternate weeks)" in line:
+            result.append(2)
+        else:
+            result.append(1)
+    
+    return result
 
 
 
@@ -90,7 +115,7 @@ def extract_days_of_week(text):
 #   ASSIGNING CALENDAR EVENTS   #
 #################################
 
-def generate_calendar(sheet):
+def generate_calendar(sheet, term_start):
     cal = Calendar()
 
     for row in sheet.iter_rows(min_row=4):
@@ -111,6 +136,11 @@ def generate_calendar(sheet):
             new_dates = extract_date_ranges(meeting_patterns)
             new_times = extract_time(meeting_patterns)
             new_days = extract_days_of_week(meeting_patterns)
+            new_weeks = check_alternate_weeks(meeting_patterns)
+    
+
+            if new_dates[i][0].year < term_start:
+                continue
 
             #EVENT TIME
             Year = new_dates[i][0].year
@@ -130,16 +160,15 @@ def generate_calendar(sheet):
             event.add('description', location[i])
             
             #Event Recurrence 
-            Year = new_dates[i][1].year
-            Month = new_dates[i][1].month
-            Day = new_dates[i][1].day
-            Hour = 0
-            Minute = 0
-            Second = 0
-            end = datetime(Year, Month, Day, Hour, Minute, Second, tzinfo=zoneinfo.ZoneInfo("America/Vancouver"))
-            days_of_week = meeting_patterns.split('|')[1].strip()
-            formatted_days = [day[:2].lower() for day in days_of_week.split()]
-            event.add('RRULE', {'freq': 'weekly', 'interval': '1', 'until': end, 'BYDAY':formatted_days})
+            interval = new_weeks[i]
+            Yearend = new_dates[i][1].year
+            Monthend = new_dates[i][1].month
+            Dayend = new_dates[i][1].day
+            Hourend = 0
+            Minuteend = 0
+            Secondend = 0
+            end = datetime(Yearend, Monthend, Dayend, Hourend, Minuteend, Secondend, tzinfo=zoneinfo.ZoneInfo("America/Vancouver"))
+            event.add('RRULE', {'freq': 'weekly', 'interval': interval, 'until': end, 'BYDAY':new_days[i]})
             event.add("VERY", 'SLOW')
 
             #Add to calendar 
@@ -148,10 +177,10 @@ def generate_calendar(sheet):
 
 
 
-cal = generate_calendar(sheet)
-#Write to .ics file
-with open(file_path, "wb") as f:
-     f.write(cal.to_ical())
-     f.close()
+# cal = generate_calendar(sheet, 2025)
+# #Write to .ics file
+# with open(file_path, "wb") as f:
+#      f.write(cal.to_ical())
+#      f.close()
 
 
