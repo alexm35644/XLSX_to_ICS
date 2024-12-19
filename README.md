@@ -1,7 +1,7 @@
 # XLSX_to_ICS
 
 ## Description 
-This prorgam converts the excel file provided by the ubc workday website into an ICS file for easy importing to your calendar. Currently only works for MACOS if you use the executable file. Feel free to run the straight python (the GUI_ICS.py). You will need to install the required libraries. 
+This prorgam converts the excel file provided by the ubc workday website into an ICS file for easy importing to your calendar. Currently only works for MACOS if you use the executable file. Feel free to run the straight python (the GUI_ICS.py) - you will need to install the required libraries if you do. 
 
 ## Instructions (Only MACOS 😔)
 - Download this repository. Either clone it or download a zip file. 
