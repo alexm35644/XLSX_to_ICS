@@ -1,4 +1,4 @@
-# XLSX_to_ICS
+# Python UBC XSLX Schedule to iCalendar 
 
 ## Description 
 This prorgam converts the excel file provided by the ubc workday website into an ICS file for easy importing to your calendar. Feel free to run the straight python (the GUI_ICS.py) - you will need to install the required libraries if you do. 
