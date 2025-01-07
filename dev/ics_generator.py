@@ -163,7 +163,7 @@ def generate_calendar(sheet, term_start):
             Yearend = new_dates[i][1].year
             Monthend = new_dates[i][1].month
             Dayend = new_dates[i][1].day
-            Hourend = 0
+            Hourend = 23
             Minuteend = 0
             Secondend = 0
             end = datetime(Yearend, Monthend, Dayend, Hourend, Minuteend, Secondend, tzinfo=zoneinfo.ZoneInfo("America/Vancouver"))
